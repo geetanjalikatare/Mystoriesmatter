@@ -1,0 +1,21 @@
+
+.menu{
+    color:"white";
+   display: hidden;
+}
+#c:hover{
+border:"5px solid red";
+color:red
+}
+#in:focus{
+    outline: none;
+    border-color: red;
+
+}
+#in{
+    border-color: white;
+}
+input:focus{
+    outline: none;
+    border: "1px light white";
+}
