@@ -18,7 +18,6 @@ import Actions from "../Features/actionMenu/Actions";
 import Description from "../Features/description/Description";
 
 const Card = ({ data }) => {
-  console.log("data")
   return (
     <Box
       style={{

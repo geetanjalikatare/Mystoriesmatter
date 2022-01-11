@@ -18,7 +18,6 @@ import LeftSidePanel from "./Leftsidepanel/LeftSidePanel";
 import { selectCount } from "../Redux/reducers/CommentSlice";
 
 function Main() {
-  console.log("called")
   const largeScreen = useMediaQuery({ minWidth: 992 });
 
   const smallScreen = useMediaQuery({ maxWidth: 991 });
@@ -61,7 +60,6 @@ function Main() {
   };
   const count = useSelector(selectCount);
   useEffect(() => {
-    console.log("useeffect")
     dispatch(EmptyMemoryData());
     setPage(0);
     dispatch(fetchMemoryAsync(obj)).then(() => {
