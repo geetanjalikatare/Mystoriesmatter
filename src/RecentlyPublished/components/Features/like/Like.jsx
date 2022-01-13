@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import {
   LikeMemoryAsync,
   UnLikeMemoryAsync,
-} from "../../../Redux/reducers/MemorySlice";
+} from "../../../../Redux/reducers/MemorySlice";
 
 const Like = ({ uid, nid, likeCount, attr_id, type }) => {
   const XtraSmall = useMediaQuery({ maxWidth: 767 });

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FilterButton from "./FilterButton";
 import { useDispatch, useSelector } from "react-redux";
-import { addFilter, selectFilters } from "../../../Redux/reducers/MemorySlice";
+import { addFilter, selectFilters } from "../../../../Redux/reducers/MemorySlice";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ const Filters = () => {
     "Close Friends": 1,
     CB: 1,
   });
-  console.log(filter);
   const checkAll = () => {
     if (
       filter.Me % 2 !== 0 &&

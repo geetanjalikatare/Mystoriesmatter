@@ -25,8 +25,7 @@ export const UnLikeMemoryAsync = createAsyncThunk(
 
 const initialState = {
   data: [],
-  token: "",
-  status: "",
+   status: "",
   filters: {
     All: 1,
     Me: 1,

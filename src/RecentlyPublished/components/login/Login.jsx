@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { LoginApi } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { LoginApi } from "../../../api/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,9 +16,9 @@ const Login = () => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    LoginApi(obj);
+   LoginApi(obj)
     setTimeout(() => {
-      navigate("/main");
+      navigate("/home");
     }, 3000);
   };
   return (

@@ -9,13 +9,13 @@ import {
   fetchMemoryAsync,
   selectData,
   selectFilters,
-} from "../Redux/reducers/MemorySlice";
+} from "../../Redux/reducers/MemorySlice";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CircularProgress } from "@mui/material";
 import Card from "./Card/Card";
 import RightSidePanel from "./Rightsidepanel/RightSidePanel";
 import LeftSidePanel from "./Leftsidepanel/LeftSidePanel";
-import { selectCount } from "../Redux/reducers/CommentSlice";
+import { selectCount } from "../../Redux/reducers/CommentSlice";
 
 function Main() {
   const largeScreen = useMediaQuery({ minWidth: 992 });

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   addCommentAsync,
   commentCounter,
-} from "../../../Redux/reducers/CommentSlice";
+} from "../../../../Redux/reducers/CommentSlice";
 
 const CommentBox = ({ nid, name }) => {
   const [data, setData] = useState("");
