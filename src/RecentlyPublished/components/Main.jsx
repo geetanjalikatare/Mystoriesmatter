@@ -19,10 +19,9 @@ import { selectCount } from "../../Redux/reducers/CommentSlice";
 
 function Main() {
   const largeScreen = useMediaQuery({ minWidth: 992 });
-
   const smallScreen = useMediaQuery({ maxWidth: 991 });
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const filters = useSelector(selectFilters);
   const MemoryData = useSelector(selectData);
   const dispatch = useDispatch();
@@ -60,8 +59,10 @@ function Main() {
   };
   const count = useSelector(selectCount);
   useEffect(() => {
-    dispatch(EmptyMemoryData());
-    setPage(0);
+    console.log("calling inside mAIN")
+
+  //  dispatch(EmptyMemoryData());
+  //  setPage(0);
     dispatch(fetchMemoryAsync(obj)).then(() => {
       setPage(page + 1);
     });

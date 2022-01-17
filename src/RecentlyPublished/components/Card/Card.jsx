@@ -49,7 +49,7 @@ const Card = ({ data }) => {
           <Grid item xs={8} md={9}>
             <Typography>
               By{" "}
-              <a href="##">
+              <a href="##" style={{fontSize:"0.8em",color:"#3279a0",fontWeight:"bold"}}>
                 {data.user_details?.field_first_name_value}{" "}
                 {data.user_details?.field_last_name_value}
               </a>{" "}
@@ -63,7 +63,7 @@ const Card = ({ data }) => {
                   ? "#2177b1"
                   : "RGB(189, 103, 103)",
                 borderRadius: "15px",
-                height: "25px",
+                height: "40%",
               }}
             >
               Shared with {data.share_count ? data.share_count : "All"} members
@@ -84,6 +84,7 @@ const Card = ({ data }) => {
             style={{
               color: "#3279a0",
               fontWeight: "bold",
+              fontSize:"1.2em",
               textDecoration: "underline",
             }}
             variant="h5"

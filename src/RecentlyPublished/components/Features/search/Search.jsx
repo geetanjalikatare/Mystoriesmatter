@@ -9,6 +9,7 @@ const Search = () => {
         borderRadius: "25px",
         width: "100%",
         backgroundColor: "white",
+        height:"80%",
       }}
     >
       <Button
@@ -18,19 +19,19 @@ const Search = () => {
           color: "white",
           borderTopLeftRadius: "20px",
           borderBottomLeftRadius: "20px",
-          height: "40px",
-          width: "30%",
-          fontSize: "14px",
+          height: "100%",
+          width: "20%",
+          fontSize: "0.7em",
         }}
       >
         Memory
       </Button>
       <input
         type="text"
-        style={{ height: "32px", width: "55%", border: "1px solid white" }}
+        style={{ width: "55%", border: "1px solid white" }}
         placeholder="Search memory..."
       ></input>
-      <Button style={{ color: "black" }}>
+      <Button style={{ color: "black",float:"right" }}>
         <SearchIcon />
       </Button>
     </Box>

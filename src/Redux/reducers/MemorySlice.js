@@ -73,6 +73,4 @@ export const MemorySlice = createSlice({
 export const { addFilter, EmptyMemoryData } = MemorySlice.actions;
 export const selectData = (state) => state.memory.data;
 export const selectFilters = (state) => state.memory.filters;
-
-
 export default MemorySlice.reducer;

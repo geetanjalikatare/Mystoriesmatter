@@ -25,7 +25,7 @@ const Comment = ({ commentData,index }) => {
           <h5
             style={{
               color: "#2d7da5",
-              fontSize: "17px",
+              fontSize:"0.7em",
               textDecoration: "underline",
             }}
           >
@@ -34,7 +34,7 @@ const Comment = ({ commentData,index }) => {
             <span
               style={{
                 color: "black",
-                fontSize: "15px",
+                fontSize:"0.9em",
                 textDecoration: "none",
               }}
             >
@@ -44,7 +44,7 @@ const Comment = ({ commentData,index }) => {
               {dateConverter(commentData?.changed).minutes}{" "}
             </span>
           </h5>
-          <p>{unescape(commentData?.comment_body_value)}</p>
+          <p style={{fontSize:"0.8em"}}>{unescape(commentData?.comment_body_value)}</p>
           <p>{commentData?.like_comment_data?.like_count>0 && <a href="##">{" "}Likes</a>}</p>
         </Grid>
         <Grid item xs={2} style={{ color: "#2d7da5", marginTop: "45px",paddingLeft:"40px",borderBottom: "1px solid lightgrey" }}>

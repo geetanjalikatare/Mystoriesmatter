@@ -6,7 +6,7 @@ const Description = ({ data }) => {
   return (
     <>
       <Typography
-        style={{ height: "108px", overflow: "hidden" }}
+        style={{ height: "108px", overflow: "hidden",fontSize:"0.8em" }}
         dangerouslySetInnerHTML={{ __html: data }}
       >   
       </Typography>
