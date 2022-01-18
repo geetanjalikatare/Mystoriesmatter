@@ -54,6 +54,7 @@ const Comment = ({ commentData,index }) => {
             nid={commentData?.nid}
             uid={commentData?.uid}
             attr_id={commentData?.cid}
+            unique={index}
           />
         </Grid>
       </Grid>

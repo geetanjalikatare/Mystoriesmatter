@@ -6,7 +6,7 @@ const Comments = ({ data }) => {
   return (
     <>
       {data.map((item, index) => {
-        return <Comment commentData={item} index={index} />;
+        return <Comment commentData={item} index={index}/>;
       })}
     </>
   );

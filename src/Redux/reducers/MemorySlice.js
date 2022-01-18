@@ -26,6 +26,7 @@ export const UnLikeMemoryAsync = createAsyncThunk(
 const initialState = {
   data: [],
    status: "",
+   page:0,
   filters: {
     All: 1,
     Me: 1,
@@ -51,7 +52,12 @@ export const MemorySlice = createSlice({
     },
     EmptyMemoryData: (state) => {
       state.data.length = 0;
+      state.page=0;
     },
+    pageCounter :(state)=>{
+      state.page+=1;
+    }
+
     
   },
   extraReducers: {
@@ -70,7 +76,8 @@ export const MemorySlice = createSlice({
   },
 });
 
-export const { addFilter, EmptyMemoryData } = MemorySlice.actions;
+export const { addFilter, EmptyMemoryData,pageCounter } = MemorySlice.actions;
 export const selectData = (state) => state.memory.data;
 export const selectFilters = (state) => state.memory.filters;
+export const selectPage = (state) => state.memory.page;
 export default MemorySlice.reducer;

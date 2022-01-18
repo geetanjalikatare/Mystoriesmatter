@@ -8,7 +8,7 @@ const Prompts = ({ data }) => {
   return (
     <div
       id="carouselExampleControls"
-      class="carousel slide"
+      className="carousel slide"
       data-bs-ride="carousel"
       style={{
         border: "1px solid green",
@@ -18,7 +18,7 @@ const Prompts = ({ data }) => {
         padding: "10px 50px 10px 75px",
       }}
     >
-      <div class="carousel-inner">
+      <div className="carousel-inner">
         {Object.keys(data).map((i, index) => {
           count++;
           return (
@@ -33,7 +33,7 @@ const Prompts = ({ data }) => {
         })}
       </div>
       <button
-        class="carousel-control-prev"
+        className="carousel-control-prev"
         type="button"
         data-bs-target="#carouselExampleControls"
         data-bs-slide="prev"
@@ -50,11 +50,11 @@ const Prompts = ({ data }) => {
             {" "}
             <ArrowBackIosNewIcon />
           </span>
-          <span class="visually-hidden">Previous</span>
+          <span className="visually-hidden">Previous</span>
         </div>
       </button>
       <button
-        class="carousel-control-next"
+        className="carousel-control-next"
         type="button"
         data-bs-target="#carouselExampleControls"
         data-bs-slide="next"
@@ -70,7 +70,7 @@ const Prompts = ({ data }) => {
           <span aria-hidden="true">
             <ArrowForwardIosIcon />
           </span>
-          <span class="visually-hidden">Next</span>
+          <span className="visually-hidden">Next</span>
         </div>
       </button>
     </div>

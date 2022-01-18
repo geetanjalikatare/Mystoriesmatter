@@ -35,11 +35,11 @@ const Filters = () => {
   const selectFilter = (val) => {
     if (val === "All") {
       filter.All += 1;
-      filter.Me += 1;
-      filter["My Friends"] += 1;
-      filter["Non Friends"] += 1;
-      filter["Close Friends"] += 1;
-      filter["CB"] += 1;
+      filter.Me = filter.All;
+      filter["My Friends"] = filter.All;
+      filter["Non Friends"] = filter.All;
+      filter["Close Friends"] = filter.All;
+      filter["CB"] = filter.All;
       setFilter({ ...filter });
     } else if (val === "Me") {
       filter.Me += 1;

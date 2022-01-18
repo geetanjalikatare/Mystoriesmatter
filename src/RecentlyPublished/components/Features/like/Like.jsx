@@ -9,7 +9,7 @@ import {
   UnLikeMemoryAsync,
 } from "../../../../Redux/reducers/MemorySlice";
 
-const Like = ({ uid, nid, likeCount, attr_id, type }) => {
+const Like = ({ uid, nid, likeCount, attr_id, type,unique }) => {
   const XtraSmall = useMediaQuery({ maxWidth: 767 });
   const dispatch = useDispatch();
   const [click, setClick] = useState(likeCount); 
@@ -36,6 +36,7 @@ const Like = ({ uid, nid, likeCount, attr_id, type }) => {
 
   return (
     <Button
+    key={unique}
       style={{
         border:
           type === "comment" || XtraSmall ? " " : "1px solid RGB(45, 125, 165)",
