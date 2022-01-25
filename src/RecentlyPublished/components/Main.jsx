@@ -137,7 +137,7 @@ function Main() {
               }
             >
               {MemoryData.map((item, index) => {
-                return <Card data={item} key={index} />;
+                return <Card data={item} index={index} />;
               })}
             </InfiniteScroll>
           </Box>

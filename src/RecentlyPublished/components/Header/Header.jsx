@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import React from "react";
 import "./Header.css";
 import { useMediaQuery } from "react-responsive";
@@ -7,10 +7,18 @@ import Search from "../Features/search/Search";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Logout } from "../../../api/api";
+import LogoutIcon from '@mui/icons-material/Logout';
 const Header = () => {
   const smallScreen = useMediaQuery({ maxWidth: 991 });
   const largeScreen = useMediaQuery({ minWidth: 992 });
+
+  const logout = (e) => {
+    Logout();
+    localStorage.clear();
+    window.location.reload()
+  }
+
   return (
     <Box
       style={{
@@ -62,13 +70,7 @@ const Header = () => {
             <LocalPostOfficeIcon
               style={{ height: "33px", width: "33px", marginLeft: "20px" }}
             />
-            <KeyboardArrowDownIcon
-              style={{
-                borderLeft: "1px solid white",
-                height: "40px",
-                marginLeft: "20px",
-              }}
-            />
+            <Button style={{ color: "white" }} onClick={logout}>{smallScreen ? <LogoutIcon /> : "Logout"}</Button>
           </span>
         </Grid>
       </Grid>

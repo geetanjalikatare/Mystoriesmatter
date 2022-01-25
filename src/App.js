@@ -5,26 +5,25 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import Home from "./Home/components/Home";
 import { Box } from "@mui/material";
+import MemoryDetail from "./RecentlyPublished/memoryDetail/MemoryDetail";
 function App() {
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(localStorage.getItem("token")){
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
       navigate("/home")
-    }else{
+    } else {
       navigate("/login")
     }
-      },[]);
+  }, []);
 
   return (
-    <Box style={{width:"100%"}}>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/main" element={<Main />} />
-      </Routes>
-     
-    </Box>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/main" element={<Main />} />
+      <Route path="/memory" element={<MemoryDetail />} />
+    </Routes>
   );
 }
 

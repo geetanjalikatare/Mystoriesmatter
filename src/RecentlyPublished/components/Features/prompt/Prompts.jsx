@@ -2,40 +2,61 @@ import React from "react";
 import Prompt from "./Prompt";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useSelector } from "react-redux";
+import { selectPrompts } from "../../../../Redux/reducers/MemorySlice";
 
-const Prompts = ({ data }) => {
-  var count = 0;
+const Prompts = ({ data, limit }) => {
+  const promptList = useSelector(selectPrompts);
+  const isData = data ? true : false
+  const list = data ? data : promptList;
+
   return (
     <div
-      id="carouselExampleControls"
+      id={`carouselExampleControls-${limit}`}
       className="carousel slide"
       data-bs-ride="carousel"
       style={{
         border: "1px solid green",
-        borderRadius: "10px",
+        borderRadius: "8px",
         backgroundColor: "#70a887",
-        height: "183px",
-        padding: "10px 50px 10px 75px",
+        height: "180px",
+        padding: "1% 11% 1% 11%",
+        margin: "2% 0% 2% 0%"
       }}
     >
-      <div className="carousel-inner">
-        {Object.keys(data).map((i, index) => {
-          count++;
+      {isData && <div className="carousel-inner">
+        {Object.keys(list).map((i, index) => {
           return (
             <div
               className={
-                count === 1 ? "carousel-item active" : "carousel-item "
+                index + 1 === 1 ? "carousel-item active" : "carousel-item "
               }
             >
-              <Prompt value={data[i]} />
+              <Prompt value={list[i]} />
             </div>
           );
         })}
+      </div>}
+      {!isData && <div className="carousel-inner">
+        {Object.keys(list)
+          .filter((i, index) => index + 1 <= limit && index + 1 > limit - 3)
+          .map((i, index) => {
+            return (
+              <div
+                className={
+                  index % 3 === 0 ? "carousel-item active" : "carousel-item"
+                }
+              >
+                <Prompt value={list[i]} />
+              </div>
+            );
+          })}
       </div>
+      }
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target="#carouselExampleControls"
+        data-bs-target={`#carouselExampleControls-${limit}`}
         data-bs-slide="prev"
       >
         <div
@@ -43,7 +64,7 @@ const Prompts = ({ data }) => {
             borderRadius: "25px",
             color: "#2d7ca7",
             padding: "5px",
-            backgroundColor: "white",
+            backgroundColor: "white"
           }}
         >
           <span aria-hidden="true">
@@ -56,7 +77,7 @@ const Prompts = ({ data }) => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleControls"
+        data-bs-target={`#carouselExampleControls-${limit}`}
         data-bs-slide="next"
       >
         <div
@@ -64,7 +85,7 @@ const Prompts = ({ data }) => {
             borderRadius: "25px",
             color: "#2d7ca7",
             padding: "5px",
-            backgroundColor: "white",
+            backgroundColor: "white"
           }}
         >
           <span aria-hidden="true">

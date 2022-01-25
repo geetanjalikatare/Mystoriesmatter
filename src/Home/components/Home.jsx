@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React from "react"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,6 @@ import { useMediaQuery } from "react-responsive";
 const Home = () => {
   const dispatch = useDispatch();
   const largeScreen = useMediaQuery({ minWidth: 992 });
-
   useEffect(() => {
     const obj = {
       type: "feed",
@@ -52,6 +51,7 @@ const Home = () => {
   <Grid item xs={12} md={9}>
 <Index/>
   </Grid>
+ 
   </Grid>
  </>)
 }

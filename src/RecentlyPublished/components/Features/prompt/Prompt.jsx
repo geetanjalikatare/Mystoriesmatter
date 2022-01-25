@@ -12,7 +12,7 @@ const Prompt = ({ value }) => {
         borderRadius: "10px",
         alignItems: "center",
         border: "1px solid #2d7ca7",
-        height: "163px",
+        height: "160px",
         backgroundColor: hover ? "white" : "#2d7ca7",
         width: "100%",
         textAlign: "center",
@@ -24,9 +24,8 @@ const Prompt = ({ value }) => {
       <h5
         style={{
           color: hover ? "black" : "white",
-          paddingBottom: "35px",
-          paddingTop: "20px",
-          marginLeft: "49px",
+          paddingTop: "2%",
+          fontSize: "0.9rem"
         }}
       >
         {value.title}
@@ -42,6 +41,8 @@ const Prompt = ({ value }) => {
           border: "2px solid white",
           color: "white",
           boxShadow: "0px 0px",
+          fontSize: "0.7rem",
+          marginTop: "2%"
         }}
       >
         Add Your Memory

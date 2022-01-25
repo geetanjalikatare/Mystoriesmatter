@@ -13,26 +13,16 @@ const Collabrator = ({ collab, authorColor }) => {
       >
         Hide Collabrator (1) ^
       </Button>
-      {collab.map((item,index) => {
+      {collab.map((item) => {
         return (
-          <Grid container style={{ display: show % 2 === 0 ? "" : "none" }}>
-            <Grid item>
-              <Avatar
-                style={{ width: "50px", height: "50px" }}
-                alt="Remy Sharp"
-                src={item.uri}
-              ></Avatar>
-            </Grid>
-            <Grid
-              item
-              style={{
-                backgroundColor: authorColor[item.uid],
-                height: "30px",
-              }}
-            >
-              {item.field_first_name_value} {item.field_last_name_value}
-            </Grid>
-          </Grid>
+          <p style={{ display: show % 2 === 0 ? "" : "none" }}>   <Avatar
+            style={{ width: "30px", height: "30px", display: "inline-block" }}
+            alt="Remy Sharp"
+            src={item.uri}
+          ></Avatar> <span style={{
+            backgroundColor: authorColor[item.uid],
+            height: "30px",
+          }}>{item.field_first_name_value} {item.field_last_name_value}</span></p>
         );
       })}
     </Box>

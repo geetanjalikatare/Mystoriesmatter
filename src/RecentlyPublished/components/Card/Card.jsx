@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Paper, Typography, Avatar } from "@mui/material";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import {
   DateRange,
   ContentCopy,
@@ -8,24 +8,26 @@ import {
 } from "@mui/icons-material";
 import Prompts from "../Features/prompt/Prompts";
 import { dateConverter } from "../util/functions";
-import ImageList from "../Features/image/ImageList";
 import CommentList from "../Features/comments/CommentList";
 import Collection from "../Features/collection/Collection";
 import Collabrator from "../Features/collaborator/Collabrator";
 import Like from "../Features/like/Like"
 import CommentBox from "../Features/comments/CommentBox";
-import Actions from "../Features/actionMenu/Actions";
 import Description from "../Features/description/Description";
+import ShareButton from "../Features/shared/ShareButton";
+const ImageList = lazy(() => import("../Features/image/ImageList"))
+const Actions = lazy (()=>import ("../Features/actionMenu/Actions"))
 
-const Card = ({ data }) => {
+
+const Card = ({ data, index }) => {
+  console.log(data)
   return (
     <Box
       style={{
         paddingBottom: "10px",
-        marginTop:"15px",
-         width:"100%",
-         margin:"0 auto",
-       
+        marginTop: "15px",
+        width: "100%",
+        margin: "0 auto"
       }}
     >
       <Paper
@@ -37,7 +39,7 @@ const Card = ({ data }) => {
       >
         <Grid
           container
-          style={{ borderBottom: "1px solid lightgrey", paddingBottom: "2%" }}
+          style={{ borderBottom: "1px solid lightgrey" }}
         >
           <Grid item xs={2} md={1}>
             <Avatar
@@ -49,28 +51,18 @@ const Card = ({ data }) => {
           <Grid item xs={8} md={9}>
             <Typography>
               By{" "}
-              <a href="##" style={{fontSize:"0.8em",color:"#3279a0",fontWeight:"bold"}}>
+              <a href="##" style={{ fontSize: "0.8em", color: "#3279a0", fontWeight: "bold" }}>
                 {data.user_details?.field_first_name_value}{" "}
                 {data.user_details?.field_last_name_value}
               </a>{" "}
               on {dateConverter(data.updated).date}{" "}
               {dateConverter(data.updated).month}
             </Typography>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: data.share_count
-                  ? "#2177b1"
-                  : "RGB(189, 103, 103)",
-                borderRadius: "15px",
-                height: "40%",
-              }}
-            >
-              Shared with {data.share_count ? data.share_count : "All"} members
-            </Button>
+            <ShareButton shareOption={data.share_option_value} shareCount={data.share_count} />
           </Grid>
-          <Grid item xs={2}  md={2}>
-            <Actions data={data.actions_on_memory} />
+          <Grid item xs={2} md={2}>
+            <Suspense fallback={<p>loading....</p>}>
+            <Actions data={data.actions_on_memory} /></Suspense>
           </Grid>
         </Grid>
         <Box
@@ -84,7 +76,7 @@ const Card = ({ data }) => {
             style={{
               color: "#3279a0",
               fontWeight: "bold",
-              fontSize:"1.2em",
+              fontSize: "1.2em",
               textDecoration: "underline",
             }}
             variant="h5"
@@ -93,8 +85,8 @@ const Card = ({ data }) => {
           </Typography>
           <Typography>
             <DateRange />
-            {dateConverter(data.updated).month}{" "}
-            {dateConverter(data.updated).year}
+            {dateConverter(data.memory_date).month}{" "}
+            {dateConverter(data.memory_date).year}
             {"     "} <LocationOn />
             {data.location}
           </Typography>
@@ -125,7 +117,8 @@ const Card = ({ data }) => {
           <Description data={data.description} />
           {data.images && (
             <Box style={{ marginTop: "30px" }}>
-              <ImageList data={data.images} />
+              <Suspense fallback={<div>loading .....</div>}>
+                <ImageList data={data.images} /></Suspense>
             </Box>
           )}
         </Box>
@@ -165,7 +158,7 @@ const Card = ({ data }) => {
               style={{
                 border: " 1px solid RGB(45, 125, 165)",
                 color: "RGB(45, 125, 165)",
-                fontSize:"0.7rem"               
+                fontSize: "0.7rem"
               }}
             >
               {" "}
@@ -198,6 +191,7 @@ const Card = ({ data }) => {
           </Box>
         )}
       </Paper>
+      {(index + 1) % 3 === 0 && <Prompts limit={index + 1} />}
     </Box>
   );
 };

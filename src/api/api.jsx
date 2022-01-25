@@ -4,25 +4,42 @@ export const LoginApi = (data) => {
   const headers = {
     "Content-Type": "application/json",
   };
-   axios
+  return axios
     .post("https://mystoriesmatter.com/api/alumni/login", data, {
       headers: headers,
     })
     .then((res) => {
-      localStorage.setItem("token",res.data.Response.UserAuthToken); 
-    });
+      return res.data;
+    }).catch((err) => console.log(err))
 };
 
+export const Logout = () => {
+  const headers = {
+    "Content-Type": "application/json",
+    "X-CSRF-TOKEN": localStorage.getItem("token"),
+  };
+  axios
+    .post("https://mystoriesmatter.com/api/alumni/logout", {
+      headers: headers,
+    })
+    .then((res) => {
+
+    })
+    .catch((err) => {
+      //throw an application exception
+    });
+}
 export const RecentPublishedApi = async (data) => {
   const headers = {
     "Content-Type": "application/json",
-    "X-CSRF-TOKEN": localStorage.getItem("token"),  };
+    "X-CSRF-TOKEN": localStorage.getItem("token"),
+  };
   return axios
     .post("https://mystoriesmatter.com/api/timeline/list", data, {
       headers: headers,
     })
     .then((res) => {
-      return res.data.Details.data;
+      return res.data.Details;
     })
     .catch((err) => {
       //throw an application exception
@@ -54,8 +71,8 @@ export const handleLike = (data) => {
     .post("https://mystoriesmatter.com/api/actions/like", data, {
       headers: headers,
     })
-    .then((res) => {})
-    .catch((err) => {});
+    .then((res) => { })
+    .catch((err) => { });
 };
 export const handleUnLike = (data) => {
   const headers = {
@@ -66,8 +83,8 @@ export const handleUnLike = (data) => {
     .post("https://mystoriesmatter.com/api/actions/unlike", data, {
       headers: headers,
     })
-    .then((res) => {})
-    .catch((err) => {});
+    .then((res) => { })
+    .catch((err) => { });
 };
 
 export const AddComment = (obj) => {
@@ -79,6 +96,6 @@ export const AddComment = (obj) => {
     .post("https://mystoriesmatter.com/api/actions/comment", obj, {
       headers: headers,
     })
-    .then((res) => {})
-    .catch((err) => {});
+    .then((res) => { })
+    .catch((err) => { });
 };
